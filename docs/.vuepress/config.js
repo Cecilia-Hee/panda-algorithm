@@ -2,7 +2,7 @@
  * @Author: Helijun
  * @Date: 2020-07-13 00:26:54
  * @LastEditors: Helijun
- * @LastEditTime: 2020-07-13 00:43:07
+ * @LastEditTime: 2020-07-13 00:59:35
  * @Description: 
  */ 
 const webpack = require('webpack')
@@ -27,8 +27,8 @@ module.exports = {
         title: '回溯',
         collapsable: true,
         children: [
+          'backtrace/',
           'backtrace/46.全排列/',
-          'backtrace/temp',
           // 'CSS/reflow_repaint'
         ]
       },
