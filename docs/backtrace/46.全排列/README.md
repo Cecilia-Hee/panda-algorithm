@@ -1,6 +1,6 @@
 # 全排列的题目啊
 
-# 地地道道的全排列
+## 普通全排列
 > 题目：[46.全排列](https://leetcode-cn.com/problems/permutations/submissions/)
 
 
