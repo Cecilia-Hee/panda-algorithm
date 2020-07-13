@@ -2,38 +2,40 @@
  * @Author: Helijun
  * @Date: 2020-07-13 00:12:12
  * @LastEditors: Helijun
- * @LastEditTime: 2020-07-13 00:55:21
+ * @LastEditTime: 2020-07-13 08:53:29
  * @Description: https://leetcode-cn.com/problems/permutations/submissions/
---> 
+-->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>全排列</title>
 </head>
+
 <body>
   <script>
     // 第46题，输入一组不重复的数字，返回这些数字的全排列
-    const arr1 = [1,2,3];
+    const arr1 = [1, 2, 3];
     console.log(permute(arr1))
 
     function permute(nums) {
-      if(!nums.length) return [];
+      if (!nums.length) return [];
       const res = [];
       const path = [];
       backtrace(nums, path, res);
       return res;
-    } 
+    }
 
     function backtrace(nums, path, res) {
-      if(path.length === nums.length) {
+      if (path.length === nums.length) {
         res.push(path.slice());
         return;
       }
 
-      for(let i=0; i<nums.length; i++) {
-        if(path.includes(nums[i])) continue;
+      for (let i = 0; i < nums.length; i++) {
+        if (path.includes(nums[i])) continue;
         //
         path.push(nums[i]);
         // 
@@ -43,6 +45,41 @@
       }
     }
 
+    // ************************************************************************
+
+    // 47题，给定一个可包含重复数字的序列，返回所有不重复的全排列。
+    const arr2 = [1, 1, 2];
+    console.log(permuteUnique(arr2))
+    function permuteUnique(nums) {
+      if (!nums.length) return []
+      nums.sort((a,b) => a-b)
+      const res = [];
+      const path = [];
+      const hash = {};
+
+      const backtrace = (path) => {
+        if(path.length === nums.length) {
+          res.push(path.slice());
+          return;
+        }
+
+        for(let i=0; i<nums.length; i++) {
+          if(hash[i] || (i > 0 && !hash[i-1] && nums[i] === nums[i-1])) continue;
+          hash[i] = true;
+          path.push(nums[i]);
+          backtrace(path);
+          hash[i] = false;
+          path.pop();        
+        }
+      }
+
+      backtrace(path);
+      return res
+    };
+
+    
+
   </script>
 </body>
+
 </html>
