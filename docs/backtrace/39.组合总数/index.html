@@ -1,0 +1,55 @@
+<!--
+ * @Author: Helijun
+ * @Date: 2020-07-14 00:15:56
+ * @LastEditors: Helijun
+ * @LastEditTime: 2020-07-14 07:40:12
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>组合</title>
+</head>
+
+<body>
+  <script>
+    // ************************************************************************
+    const arr3 = [2, 3, 5];
+    const target = 8;
+    var combinationSum = function (candidates, target) {
+      if (!candidates.length) return [];
+      const res = [];
+      const path = [];
+      let start = 0;
+      backtrace(path, target, start);
+      return res;
+
+
+      function backtrace(path, target, start) {
+        if (target < 0) return;
+        if (target === 0) {
+          res.push(path.slice());
+          return;
+        }
+
+        for (let i = start; i < candidates.length; i++) {
+          let temp = candidates[i];
+          let newTarget = target - temp;
+          path.push(temp)
+          backtrace(path, newTarget, i);
+          path.pop()
+        }
+      }
+    };
+
+    console.log(combinationSum(arr3, target))
+
+    // 
+    
+  </script>
+</body>
+
+</html>
