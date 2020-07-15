@@ -2,7 +2,7 @@
  * @Author: Helijun
  * @Date: 2020-07-14 00:15:56
  * @LastEditors: Helijun
- * @LastEditTime: 2020-07-14 07:40:12
+ * @LastEditTime: 2020-07-15 08:28:58
  * @Description: 
 -->
 <!DOCTYPE html>
@@ -47,8 +47,35 @@
 
     console.log(combinationSum(arr3, target))
 
-    // 
-    
+    // 77. 给定两个整数 n 和 k，返回 1 ... n 中所有可能的 k 个数的组合。
+    /**
+     * @param {number} n
+     * @param {number} k
+     * @return {number[][]}
+     */
+    var combine = function (n, k) {
+      if (k === 0 || n === 0) return [];
+      const res = [];
+      const path = [];
+      backtrace(n, path, 1);
+
+      function backtrace(n, path, start) {
+        if (path.length === k) {
+          res.push(path.slice());
+          return;
+        }
+        for (let i = start; i <= n; i++) {
+          path.push(i);
+          backtrace(n, path, i + 1);
+          path.pop();
+        }
+      }
+
+      return res;
+    };
+
+    console.log(combine(4, 2));
+
   </script>
 </body>
 

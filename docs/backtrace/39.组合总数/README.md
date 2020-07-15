@@ -105,3 +105,94 @@ var combinationSum2 = function(candidates, target) {
 ```
 
 ## 77.K个数的组合
+> [77.K个数的组合](https://leetcode-cn.com/problems/combinations/)
+每次从i+1开始，取前k个数，
+
+> 输入4，2
+> 输出[[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]]
+
+```js
+var combine = function (n, k) {
+    if (k === 0 || n === 0) return [];
+    const res = [];
+    const path = [];
+    backtrace(n, path, 1);
+
+    function backtrace(n, path, start) {
+      if (path.length === k) {
+        res.push(path.slice());
+        return;
+      }
+      for (let i = start; i <= n; i++) {
+        path.push(i);
+        backtrace(n, path, i + 1);
+        path.pop();
+      }
+    }
+
+    return res;
+};
+```
+
+## 78. 求子集
+> [78. 求子集](https://leetcode-cn.com/problems/subsets/submissions/)
+
+像77题的升级版，每次确定K个(0-nums.length-1)去求组合。
+
+
+> 输入 [1,2,3]
+> 输出 [[],[1],[2],[3],[1,2],[1,3],[2,3],[1,2,3]]
+
+### 回溯解法1
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var subsets = function(nums) {
+    if(!nums.length) return [];
+    const res = [];
+    const path = [];
+    let start = 0;
+    for(let k=0; k<=nums.length; k++) {
+        backtrace(path, start, k);
+    }
+    
+    function backtrace(path, start, k) {
+        if(path.length === k) {
+            res.push(path.slice());
+            return;
+        }
+        for(let i=start; i<nums.length; i++) {
+            path.push(nums[i]);
+            backtrace(path, i+1, k);
+            path.pop();
+        }
+    }
+
+    return res;
+};
+```
+
+### 回溯解法2
+```js
+var subsets = function(nums) {
+    let n = nums.length;
+    let tmpPath = [];
+    let res = [];
+    let backtrack = (tmpPath,start) => {
+        res.push(tmpPath);
+       for(let i = start;i < n;i++){
+           tmpPath.push(nums[i]);
+           backtrack(tmpPath.slice(),i+1);
+           tmpPath.pop();
+       } 
+    }
+    backtrack(tmpPath,0);
+    return res;
+};
+```
+### 递归解法
+### 迭代解法
+### 字典解法
