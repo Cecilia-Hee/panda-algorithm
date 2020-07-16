@@ -2,7 +2,7 @@
  * @Author: Helijun
  * @Date: 2020-07-13 00:26:54
  * @LastEditors: Helijun
- * @LastEditTime: 2020-07-14 00:16:45
+ * @LastEditTime: 2020-07-16 08:58:38
  * @Description: 
  */ 
 const webpack = require('webpack')
@@ -28,8 +28,9 @@ module.exports = {
         collapsable: true,
         children: [
           'backtrace/',
-          'backtrace/46.全排列/',
-          'backtrace/39.组合总数/',
+          'backtrace/全排列/',
+          'backtrace/组合总数/',
+          'backtrace/二维平面回溯/',
           // 'CSS/reflow_repaint'
         ]
       },
