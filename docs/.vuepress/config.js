@@ -2,7 +2,7 @@
  * @Author: Helijun
  * @Date: 2020-07-13 00:26:54
  * @LastEditors: Helijun
- * @LastEditTime: 2020-07-16 08:58:38
+ * @LastEditTime: 2020-07-20 08:02:25
  * @Description: 
  */ 
 const webpack = require('webpack')
@@ -34,6 +34,14 @@ module.exports = {
           // 'CSS/reflow_repaint'
         ]
       },
+      {
+        title: '动态规划',
+        collapsable: true,
+        children: [
+          'dynamic-programming/',
+          'dynamic-programming/最长回文子串/',
+        ]
+      }
     ]
   },
   plugins: ['@vuepress/back-to-top'],
