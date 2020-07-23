@@ -2,7 +2,7 @@
  * @Author: Helijun
  * @Date: 2020-07-13 00:26:54
  * @LastEditors: Helijun
- * @LastEditTime: 2020-07-22 00:59:42
+ * @LastEditTime: 2020-07-23 08:56:12
  * @Description: 
  */ 
 const webpack = require('webpack')
@@ -41,7 +41,9 @@ module.exports = {
           'dynamic-programming/',
           'dynamic-programming/最长回文子串/',
           'dynamic-programming/509.斐波那契数列/',
-          'dynamic-programming/322.零钱兑换/'
+          'dynamic-programming/322.零钱兑换/',
+          'dynamic-programming/最子序列/',
+          'dynamic-programming/背包问题/'
         ]
       }
     ]
