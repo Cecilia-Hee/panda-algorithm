@@ -1,7 +1,9 @@
 # 零钱兑换
+
+## 零钱兑换1
 > [322.零钱兑换](https://leetcode-cn.com/problems/coin-change/solution/)
 
-## 暴力解法
+### 暴力解法
 可以尝试画出树
 ```js
 // 1. 动态规划，自上而下
@@ -20,7 +22,7 @@ var coinChange = function(coins, amount) {
 
     console.log(coinChange([1,2,5], 11))
 ```
-## 有备忘录的解法
+### 有备忘录的解法
 同样只是把已经计算过的存起来
 ```js
 // 2. 有备忘录的解法
@@ -45,3 +47,6 @@ var coinChange2 = function (coins, amount) {
 }
     console.log(coinChange2([1,2,5], 11))
 ```
+
+## 零钱兑换2
+> [518. 零钱兑换](https://leetcode-cn.com/problems/coin-change-2/)
