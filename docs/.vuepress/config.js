@@ -2,7 +2,7 @@
  * @Author: Helijun
  * @Date: 2020-07-13 00:26:54
  * @LastEditors: Helijun
- * @LastEditTime: 2020-07-26 17:53:43
+ * @LastEditTime: 2020-07-26 18:13:05
  * @Description: 
  */ 
 const webpack = require('webpack')
@@ -47,6 +47,7 @@ module.exports = {
           'dynamic-programming/最短编辑距离/',
           'dynamic-programming/高楼扔鸡蛋/',
           'dynamic-programming/爬楼梯/',
+          'dynamic-programming/打家劫舍/',
         ]
       },
       {
