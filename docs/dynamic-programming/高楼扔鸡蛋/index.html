@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>高楼扔鸡蛋</title>
+</head>
+<body>
+  <script>
+    // 状态：鸡蛋的个数K，楼层的高度N，用这两个状态建立一个dp-table;
+    var superEggDrop = function(K, N) {
+      if(K === 0) return 0;
+      if(N === 0) return 0;
+      if(K === 1) return N;
+
+      const dp = new Array(K+1).fill(0);
+      let res = 0;
+
+      while(dp[K] < N) {
+        for(i=K; i>0; i--) {
+          dp[i] = dp[i-1] + dp[i] + 1;
+        }
+        res ++;
+      }
+      console.log(dp)
+      return res;
+    };
+    console.log(superEggDrop(3, 14))
+
+  </script>
+</body>
+</html>

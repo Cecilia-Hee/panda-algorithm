@@ -2,7 +2,7 @@
  * @Author: Helijun
  * @Date: 2020-07-13 00:26:54
  * @LastEditors: Helijun
- * @LastEditTime: 2020-07-23 08:56:12
+ * @LastEditTime: 2020-07-26 17:53:43
  * @Description: 
  */ 
 const webpack = require('webpack')
@@ -43,7 +43,18 @@ module.exports = {
           'dynamic-programming/509.斐波那契数列/',
           'dynamic-programming/322.零钱兑换/',
           'dynamic-programming/最子序列/',
-          'dynamic-programming/背包问题/'
+          'dynamic-programming/背包问题/',
+          'dynamic-programming/最短编辑距离/',
+          'dynamic-programming/高楼扔鸡蛋/',
+          'dynamic-programming/爬楼梯/',
+        ]
+      },
+      {
+        title: '链表',
+        collapsable: true,
+        children: [
+          'listnode/',
+          'listnode/双指针/'
         ]
       }
     ]

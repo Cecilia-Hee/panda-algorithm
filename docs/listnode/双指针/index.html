@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>双指针</title>
+</head>
+<body>
+  <script>
+    function ListNode(val) {
+      this.val = val;
+      this.next = null;
+    }
+
+    function getListNode(array) {
+      let node = new ListNode(array[0]);
+      let newNode = node;
+      for(let i=1; i<array.length; i++) {
+        newNode.next = new ListNode(array[i]) || null;
+        newNode = newNode.next;
+      }
+      return node;
+    }
+
+    // 86.分割链表，加上哑巴节点
+    var partition = function(head, x) {
+        let beforeHead = new ListNode(0);
+        let afterHead = new ListNode(0);
+        let before = beforeHead;
+        let after = afterHead;
+        while(head) {
+          if(head.val < x) {
+            before.next = head;
+            before = before.next;
+          } else {
+            after.next = head;
+            after = after.next;
+          }
+          head = head.next;
+        }
+        after.next = null;  // 结束比较大的指针
+        before.next = afterHead.next;
+        return beforeHead.next;
+
+    };
+
+    const listnode1 = getListNode([1,4,3,2,5,2])
+    console.log(partition(listnode1, 3))
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爬楼梯</title>
+</head>
+<body>
+  <script>
+    // 70.爬楼梯
+    // 解法1： 自定向下递归， n到45时，就会超时了
+    var climbStairs = function(n) {
+        if(n == 0) return 1;
+        if(n == 1) return 1;
+        return climbStairs(n-1) + climbStairs(n-2);
+    };
+
+    console.log(climbStairs(10))
+
+    // 解法2： 自定向下递归+备忘录
+    var climbStairs2 = function(n) {
+      
+      const map = {};
+      function helper(n) {
+        if(n == 0) return 1;
+        if(n == 1) return 1;
+        if(map[n]) return map[n];
+        let tmp = helper(n-1) + helper(n-2);
+        map[n] = tmp;
+        return tmp;
+      }
+
+      return helper(n)
+    }
+
+    console.log(climbStairs2(40))
+
+    // 解法3：动态规划法。dp-table, 即dp[i] = dp[i-1]+dp[i-2]
+    var climbStairs3 = function(n) {
+      const dp = new Array(n+1).fill(0);
+      dp[0] = 1;
+      dp[1] = 1;
+      for(let i=2; i<=n; i++) {
+        dp[i] = dp[i-1] + dp[i-2];
+      }
+      return dp[n]
+    }
+    console.log(climbStairs3(40))
+
+    // 解法4： 简化状态，当前的值只与前两个有关，因此没必要维护一个dp table数组, 降低空间复杂度
+    var climbStairs4 = function(n) {
+      if(n == 0) return 1;
+      if(n == 1) return 1;
+      let prev1 = 1;
+      let prev2 = 1;
+      let res = 0;
+      for(let i=2; i<=n; i++) {
+        res = prev1 + prev2;
+        prev1 = prev2;
+        prev2 = res;
+      }
+      return res;
+    }
+    console.log(climbStairs4(40))
+
+
+
+
+
+
+  </script>
+</body>
+</html>
