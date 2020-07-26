@@ -2,7 +2,7 @@
  * @Author: Helijun
  * @Date: 2020-07-13 00:26:54
  * @LastEditors: Helijun
- * @LastEditTime: 2020-07-26 18:13:05
+ * @LastEditTime: 2020-07-26 19:37:20
  * @Description: 
  */ 
 const webpack = require('webpack')
@@ -13,7 +13,7 @@ module.exports = {
   base: '/',
   cache: false,
   head:[
-      ['link', {rel:'icon', href:'/images/favicon.ico'}]  // 增加一个自定义的 favicon(网页标签的图标)
+      ['link', {rel:'icon', href:'/icons/favicon.ico'}]  // 增加一个自定义的 favicon(网页标签的图标)
   ],
   markdown: {
     lineNumbers: true // 代码块显示行号
