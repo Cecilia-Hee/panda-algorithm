@@ -12,3 +12,5 @@
 1. [斐波那契数列](/dynamic-programming/509.斐波那契数列/)
 2. [打家劫舍](/dynamic-programming/打家劫舍/)
 3. [爬楼梯](/dynamic-programming/爬楼梯/)
+4. [最小路径和](dynamic-programming/最小路径和/)
+4. [不同路径](dynamic-programming/不同路径/)

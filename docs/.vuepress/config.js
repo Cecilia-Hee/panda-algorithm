@@ -2,7 +2,7 @@
  * @Author: Helijun
  * @Date: 2020-07-13 00:26:54
  * @LastEditors: Helijun
- * @LastEditTime: 2020-07-26 19:37:20
+ * @LastEditTime: 2020-07-27 08:38:22
  * @Description: 
  */ 
 const webpack = require('webpack')
@@ -48,6 +48,8 @@ module.exports = {
           'dynamic-programming/高楼扔鸡蛋/',
           'dynamic-programming/爬楼梯/',
           'dynamic-programming/打家劫舍/',
+          'dynamic-programming/最小路径和/',
+          'dynamic-programming/不同路径/',
         ]
       },
       {
