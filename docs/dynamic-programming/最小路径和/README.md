@@ -55,50 +55,53 @@ var minPathSum = function(grid) {
 ## 三角形的最小路径和
 > [120. 三角形的最小路径和](https://leetcode-cn.com/problems/triangle/)
 
-### 动态规划解法
+### 动态规划常规解法
 自己再整理一下
+
 ```js
-// 120. 三角形的最小路径和
-    var minimumTotal = function(triangle) {
-        if(!triangle.length) return 0;
-        const n = triangle.length
-        const dp = new Array(triangle[n-1].length).fill(0);
-        
-        for(let i=0; i<dp.length; i++) {
-          dp[i] = triangle[n-1][i]
-        }
-
-        // 从倒数第二列开始遍历
-        for(let i = dp.length - 2; i>=0; i--) {
-          for(let j=0; j<n; j++) {
-            dp[j] = Math.min(dp[j], dp[j+1]) + triangle[i][j]
-          }
-        }
-        return dp[0]
-    };
-    console.log(minimumTotal([[2],[3,4],[6,5,7],[4,1,8,3]]))
-
-    // 120. 三角形的最小路径和  常规做法
-    var minimumTotal2 = function(triangle) {
-      if(!triangle.length) return 0;
-      const n = triangle.length;
-      const dp = new Array(n).fill(0).map(() => new Array(n).fill(0));
-      dp[0][0] = triangle[0][0]
-      for(let i=1; i<n; i++) {
-        dp[i][0] = dp[i-1][0] + triangle[i][0]
-        for (let j=1; j<i; j++) {
-          dp[i][j] = Math.min(dp[i-1][j], dp[i-1][j-1]) + triangle[i][j]
-        }
-
-        // i===j时
-        dp[i][i] = dp[i-1][i-1] + triangle[i][i]
-      }
-
-      const resArr = dp[n-1].slice();
-      return Math.min.apply(null, resArr)
-
-      console.log(dp)
+var minimumTotal2 = function(triangle) {
+  if(!triangle.length) return 0;
+  const n = triangle.length;
+  const dp = new Array(n).fill(0).map(() => new Array(n).fill(0));
+  dp[0][0] = triangle[0][0]
+  for(let i=1; i<n; i++) {
+    dp[i][0] = dp[i-1][0] + triangle[i][0]
+    for (let j=1; j<i; j++) {
+      dp[i][j] = Math.min(dp[i-1][j], dp[i-1][j-1]) + triangle[i][j]
     }
 
-    console.log(minimumTotal2([[2],[3,4],[6,5,7],[4,1,8,3]]))
+    // i===j时
+    dp[i][i] = dp[i-1][i-1] + triangle[i][i]
+  }
+
+  const resArr = dp[n-1].slice();
+  return Math.min.apply(null, resArr)
+
+  console.log(dp)
+}
+
+console.log(minimumTotal2([[2],[3,4],[6,5,7],[4,1,8,3]]))
+```
+
+### 动态规划压缩状态解法
+```js
+// 120. 三角形的最小路径和
+var minimumTotal = function(triangle) {
+    if(!triangle.length) return 0;
+    const n = triangle.length
+    const dp = new Array(triangle[n-1].length).fill(0);
+    
+    for(let i=0; i<dp.length; i++) {
+      dp[i] = triangle[n-1][i]
+    }
+
+    // 从倒数第二列开始遍历
+    for(let i = dp.length - 2; i>=0; i--) {
+      for(let j=0; j<n; j++) {
+        dp[j] = Math.min(dp[j], dp[j+1]) + triangle[i][j]
+      }
+    }
+    return dp[0]
+};
+console.log(minimumTotal([[2],[3,4],[6,5,7],[4,1,8,3]]))    
 ```

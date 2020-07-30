@@ -2,7 +2,7 @@
  * @Author: Helijun
  * @Date: 2020-07-13 00:26:54
  * @LastEditors: Helijun
- * @LastEditTime: 2020-07-27 08:38:22
+ * @LastEditTime: 2020-07-30 08:14:14
  * @Description: 
  */ 
 const webpack = require('webpack')
@@ -39,17 +39,25 @@ module.exports = {
         collapsable: true,
         children: [
           'dynamic-programming/',
-          'dynamic-programming/最长回文子串/',
+          // 一种状态决定
           'dynamic-programming/509.斐波那契数列/',
+          'dynamic-programming/打家劫舍/',
+          'dynamic-programming/爬楼梯/',
+          'dynamic-programming/最小路径和/',
+          'dynamic-programming/不同路径/',
+          'dynamic-programming/按摩师/', 
+          
+          // 两种状态决定
+          'dynamic-programming/最长回文子串/', 
+                          
           'dynamic-programming/322.零钱兑换/',
           'dynamic-programming/最子序列/',
           'dynamic-programming/背包问题/',
           'dynamic-programming/最短编辑距离/',
           'dynamic-programming/高楼扔鸡蛋/',
-          'dynamic-programming/爬楼梯/',
-          'dynamic-programming/打家劫舍/',
-          'dynamic-programming/最小路径和/',
-          'dynamic-programming/不同路径/',
+          
+          
+          
         ]
       },
       {

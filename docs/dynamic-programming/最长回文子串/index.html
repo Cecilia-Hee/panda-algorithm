@@ -56,6 +56,37 @@
     }
     
     console.log(longestPalindrome2('babad'))
+    
+
+
+
+
+
+
+
+    var longestPalindrome3 = function(s) {
+      let n = s.length;
+      let res = '';
+      const dp = new Array(n).fill(false).map(() => new Array(n).fill(false));
+
+      for(let i=n-1; i>=0; i--) {
+        for(let j=i; j<n; j++) {
+          if(j-i < 2) {
+            dp[i][j] = (s[i] == s[j])
+          } else {
+            dp[i][j] = (s[i] == s[j]) && dp[i+1][j-1]
+          }
+
+          if(dp[i][j] && j+1-i > res.length) {
+            res = s.slice(i, j+1);
+          }
+        }
+      }
+      console.log(dp)
+      return res;
+    }
+
+    console.log(longestPalindrome3('babad'))
 
 
   </script>
