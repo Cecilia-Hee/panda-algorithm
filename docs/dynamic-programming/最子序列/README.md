@@ -19,11 +19,12 @@ var lengthOfLIS = function (nums) {
 }
 ```
 ## 最大子序和
-> [53. 最大子序和 ](https://leetcode-cn.com/problems/maximum-subarray/)
+> [53. 最大子序和 ](https://leetcode-cn.com/problems/maximum-subarray/)<br/>
+> [剑指 Offer 42. 连续子数组的最大和](https://leetcode-cn.com/problems/lian-xu-zi-shu-zu-de-zui-da-he-lcof/)
 
-`p(i) = p(i-1)+i`， 其中i表示第i项的值，p(i)表示加上第i项的值之后的和；
+这道题目的要求是，输入一个整数数组，数组中有正数也有负数，求一个子数组的和为最大值。这里的【子数组】是指原数组中一个或者连续多个整数组成的。
 
-这个题目要求的是子数组，因此必须是连续的；
+状态方程是： `p(i) = p(i-1)+i`， 其中i表示第i项的值，p(i)表示加上第i项的值之后的和；
 
 ```js
 var maxSubArray = function(nums) {
@@ -37,4 +38,19 @@ var maxSubArray = function(nums) {
   return res;
 }
 
+// 或者是如下这样
+
+var maxSubArray = function(nums) {
+  if(!nums.length) return 0;
+  if(nums.length < 2) return nums[0]
+  let res = nums[0];
+  let curr = nums[0];
+
+  for(let i=1; i<nums.length; i++) {
+    curr = Math.max(nums[i]+curr, nums[i]);
+    res = Math.max(curr, res)
+  }
+
+  return res;
+};
 ```
