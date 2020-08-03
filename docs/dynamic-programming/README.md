@@ -16,6 +16,7 @@
 5. [三角形的最小路径和](/dynamic-programming/最小路径和/#三角形的最小路径和/)
 6. [不同路径](/dynamic-programming/不同路径/)
 7. [按摩师](/dynamic-programming/按摩师/)
+8. [乘积最大的子序列](/dynamic-programming/乘积最大的子序列/)
 
 ### 两种状态决定【】
 1. [最长回文子串](/dynamic-programming/最长回文子串/)

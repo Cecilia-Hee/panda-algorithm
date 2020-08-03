@@ -1,0 +1,39 @@
+<!--
+ * @Author: Helijun
+ * @Date: 2020-08-03 22:55:51
+ * @LastEditors: Helijun
+ * @LastEditTime: 2020-08-03 23:12:24
+ * @Description: 
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>乘机最大的子序列</title>
+</head>
+<body>
+
+<script>
+var maxProduct = function(nums) {
+  if(!nums.length) return 0;
+  if(nums.length < 2) return nums[0];
+  let res = Number.MIN_SAFE_INTEGER;
+  let max = 1;
+  let min = 1;
+  for(let i=0; i<nums.length; i++) {
+    if(nums[i] < 0) {
+      [max, min] = [min, max]
+    }
+    max = Math.max(nums[i], nums[i] * max);
+    min = Math.min(nums[i], nums[i] * min);
+    res = Math.max(res, max)
+  }
+  return res;
+};
+
+console.log(maxProduct([2,3,-2,4,-2]))
+</script>
+
+</body>
+</html>

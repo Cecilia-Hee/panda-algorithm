@@ -1,0 +1,39 @@
+<!--
+ * @Author: Helijun
+ * @Date: 2020-08-04 00:08:02
+ * @LastEditors: Helijun
+ * @LastEditTime: 2020-08-04 00:19:12
+ * @Description: 
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>字符串相加</title>
+</head>
+<body>
+  
+<script>
+var addStrings = function(num1, num2) {
+  let i=num1.length-1;
+  let j=num2.length-1;
+  let add = 0;
+  const res = []
+  while(i>=0 || j>=0 || add != 0) {
+    let x = i >=0 ? num1[i] : 0;
+    let y = j >=0 ? num2[j] : 0;
+    let result = parseInt(x) + parseInt(y) + add;
+    res.unshift(result % 10);
+    add = Math.floor(result / 10);
+    i--;
+    j--;
+  }
+  return res.join('')
+};
+
+console.log(addStrings('1', '9'))
+
+</script>
+</body>
+</html>

@@ -2,7 +2,7 @@
  * @Author: Helijun
  * @Date: 2020-07-13 00:26:54
  * @LastEditors: Helijun
- * @LastEditTime: 2020-07-30 08:14:14
+ * @LastEditTime: 2020-08-04 00:07:20
  * @Description: 
  */ 
 const webpack = require('webpack')
@@ -46,10 +46,10 @@ module.exports = {
           'dynamic-programming/最小路径和/',
           'dynamic-programming/不同路径/',
           'dynamic-programming/按摩师/', 
+          'dynamic-programming/乘积最大的子序列/', 
           
           // 两种状态决定
-          'dynamic-programming/最长回文子串/', 
-                          
+          'dynamic-programming/最长回文子串/',                      
           'dynamic-programming/322.零钱兑换/',
           'dynamic-programming/最子序列/',
           'dynamic-programming/背包问题/',
@@ -66,6 +66,13 @@ module.exports = {
         children: [
           'listnode/',
           'listnode/双指针/'
+        ]
+      },
+      {
+        title: '字符串',
+        collapseable: true,
+        children: [
+          'string/'
         ]
       }
     ]

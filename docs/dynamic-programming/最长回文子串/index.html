@@ -9,35 +9,36 @@
   <script>
 
     // 5. 最长回文子串，中信扩散法
-    const longestPalindrome = function(s) {
-      if(!s || s.length < 2) return s;
-      let start = 0;
-      let end = 0;
+const longestPalindrome = function(s) {
+  if(!s || s.length < 2) return s;
+  let start = 0;
+  let max = 1;
 
-      // 中心扩散法
-      const expandCenter = function(s,left, right) {
-        while(left >= 0 && right < s.length && s[left] === s[right]) {
-          left--;
-          right++;
-        }
-        return right-left-1;
-      }
+  // 中心扩散法
+  const expandCenter = function(s,left, right) {
+    while(left >= 0 && right < s.length && s[left] === s[right]) {
+      left--;
+      right++;
+    }
+    return right-left-1;
+  }
 
-      for(let i=0; i<s.length; i++) {
-        let len1 = expandCenter(s, i,i);
-        let len2 = expandCenter(s,i,i+1);
-        let len = Math.max(len1, len2);
-        if(len > end - start) {
-          start = i - Math.floor((len - 1)/2)
-          end = i + Math.floor((len)/2)
-        }
-
-      }
-
-      return s.slice(start, end+1)
+  for(let i=0; i<s.length-1; i++) {
+    let odd = expandCenter(s, i,i);   // 奇数子串的长度
+    let even = expandCenter(s,i,i+1); // 偶数子串的长度
+    let len = Math.max(odd, even);
+    if(len > max) {
+      max = len;
+      start = i - Math.floor((len - 1)/2)   // 起始位置为啥是这样呢
     }
 
-    console.log(longestPalindrome('babad'))
+  }
+
+  return s.slice(start, start+max)
+}
+
+console.log(longestPalindrome('cbbd'))
+
 
     // 5. 最长回文子串，动态规划法
     const longestPalindrome2 = function(s) {

@@ -1,36 +1,53 @@
 # 最长回文子串
 > [5.最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)
+
 ## 中心扩散法
+<div style="background-color: RGBA(62,175,124,0.10); font-size: 14px; font-family:'PingFangSC-Regular'; color: #3eaf7c; font-weight: 600; padding: 10px; border-radius: 8px; margin-bottom: 20px;">
+做法：<br/>
+
+1. 枚举所有回文子串的中心位置;
+
+2. 中心位置可能是一个字符，也可能是两个字符，和字符串的长度为奇数或者偶数有关系
+
+3. 记录最长位置的相关变量，开头and长度
+
+<br/>
+
+</div>
+
+
+
 ```js
 const longestPalindrome = function(s) {
-      if(!s || s.length < 2) return s;
-      let start = 0;
-      let end = 0;
+  if(!s || s.length < 2) return s;
+  let start = 0;
+  let max = 1;
 
-      // 中心扩散法
-      const expandCenter = function(s,left, right) {
-        while(left >= 0 && right < s.length && s[left] === s[right]) {
-          left--;
-          right++;
-        }
-        return right-left-1;
-      }
+  // 中心扩散法
+  const expandCenter = function(s,left, right) {
+    while(left >= 0 && right < s.length && s[left] === s[right]) {
+      left--;
+      right++;
+    }
+    return right-left-1;
+  }
 
-      for(let i=0; i<s.length; i++) {
-        let len1 = expandCenter(s, i,i);
-        let len2 = expandCenter(s,i,i+1);
-        let len = Math.max(len1, len2);
-        if(len > end - start) {
-          start = i - Math.floor((len - 1)/2)
-          end = i + Math.floor((len)/2)
-        }
-
-      }
-
-      return s.slice(start, end+1)
+  for(let i=0; i<s.length-1; i++) {
+    let odd = expandCenter(s, i,i);   // 奇数子串的长度
+    let even = expandCenter(s,i,i+1); // 偶数子串的长度
+    let len = Math.max(odd, even);
+    if(len > max) {
+      max = len;
+      start = i - Math.floor((len - 1)/2)   
+      // 起始位置为啥是这样呢, 因为现在的i在起始点和终点的中间，需要左移长度的一半
     }
 
-    console.log(longestPalindrome('babad'))
+  }
+
+  return s.slice(start, start+max)
+}
+
+console.log(longestPalindrome('babad'))
 
 
 ```
@@ -67,8 +84,20 @@ const longestPalindrome2 = function(s) {
 
 思路：
 
-> 
+> 如果一个子串为回文子串，那么给这个子串的两端各添加一个相同的字母，则结果也一定是回文子串。<br/>
+> 如果用`dp[i][j]`表示子串s中从i到j闭区间内的子串是否为回文子串，那么此时的状态方程是：`dp[i][j] = (s[i] === s[j]) && dp[i+1][j-1]`。<br/>
+> 再考虑到边界情况，1. 如果一个子串的长度是1，那么它一定是回文子串<br/>
+> 另一个边界条件是：`j-1-(i+1)+1<2即 j-i<3`，这个条件的原因是 如果s[i]==s[j],且s[i,j]的长度小于3时，不用检查子串是否为回文子串，因为一定是。
 
+<div style="background-color: RGBA(62,175,124,0.10); font-size: 14px; font-family:'PingFangSC-Regular'; color: #3eaf7c; font-weight: 600; padding: 10px; border-radius: 8px; margin-bottom: 20px;">
+做法：<br/>
+1. 先设置一个二维的dp[i][j]，i和j的最大值都是n，即分别用i和j来表示下标的位置 <br/>
+2. 然后将对角线上的元素的值都设置为true，因为对角线上的元素是同一个元素，只有一个元素时，必然是回文子串<br/>
+3. 从第一列开始遍历和填充，即`j=1开始，i=0开始，i小于j结束`, <br/>
+4. 如果s[i]!=s[j]，则直接设置为false，否则看j-i是否小于3，如果小于3， 则设置为true，如果不小于3，则看中间的子串是否为回文<br/>
+5. 每次遍历结束之后，如果有为回文子串的，则和已有的最大长度做比较，如果大于已有的最大长度，则赋值。<br/>
+6. tip: 只需要记录字符串的开始位置和最长长度，在最后输出的位置做截取就可以了。<br/>
+</div>
 
 ```js
 // 动态规划4
