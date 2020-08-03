@@ -2,7 +2,7 @@
  * @Author: Helijun
  * @Date: 2020-07-13 00:26:54
  * @LastEditors: Helijun
- * @LastEditTime: 2020-08-04 00:07:20
+ * @LastEditTime: 2020-08-04 00:22:11
  * @Description: 
  */ 
 const webpack = require('webpack')
@@ -72,7 +72,8 @@ module.exports = {
         title: '字符串',
         collapseable: true,
         children: [
-          'string/'
+          'string/',
+          'string/字符串相加/',
         ]
       }
     ]
