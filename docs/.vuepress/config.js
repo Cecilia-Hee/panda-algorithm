@@ -2,7 +2,7 @@
  * @Author: Helijun
  * @Date: 2020-07-13 00:26:54
  * @LastEditors: Helijun
- * @LastEditTime: 2020-08-04 00:22:11
+ * @LastEditTime: 2020-08-04 08:17:14
  * @Description: 
  */ 
 const webpack = require('webpack')
@@ -74,6 +74,7 @@ module.exports = {
         children: [
           'string/',
           'string/字符串相加/',
+          'string/无重复字符的最长子串/',
         ]
       }
     ]

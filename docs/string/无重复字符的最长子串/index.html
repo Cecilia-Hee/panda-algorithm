@@ -1,0 +1,56 @@
+<!--
+ * @Author: Helijun
+ * @Date: 2020-08-04 08:16:25
+ * @LastEditors: Helijun
+ * @LastEditTime: 2020-08-04 08:43:34
+ * @Description: 
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>无重复字符的最长子串</title>
+</head>
+<body>
+<script>
+  const lengthOfLongestSubstring = function(s) {
+    if(!s.length) return 0;
+    let arr = [];
+    let max = 0;
+    for(let i=0; i<s.length; i++) {
+      let index = arr.indexOf(s[i])
+      if(index > -1) {
+        arr.splice(0, index+1);
+      } 
+      arr.push(s[i]);
+      max = Math.max(max, arr.length)
+    }
+    return max;
+  }
+
+  console.log(lengthOfLongestSubstring("pwwkew"))
+
+  // 滑动窗口解法
+  const lengthOfLongestSubstring2 = function(s) {
+    if(!s.length) return 0;
+    let left = 0;
+    let right = 0;
+    let maxLength = 0;
+    const map = new Map();
+    for(right=0; right<s.length; right++) {
+      let isHas = map.has(s[right]);
+      if(isHas) {
+        // 把left移动到出现位置的下一个
+        left = Math.max(left, map.get(s[right])+1)
+      }
+      map.set(s[right], right);
+      maxLength = Math.max(maxLength, right-left+1);
+    }
+    return maxLength;
+  }
+  console.log(lengthOfLongestSubstring2("pwwkew"))
+  
+</script>  
+</body>
+</html>
