@@ -1,0 +1,85 @@
+<!--
+ * @Author: Helijun
+ * @Date: 2020-08-05 00:05:58
+ * @LastEditors: Helijun
+ * @LastEditTime: 2020-08-05 08:27:20
+ * @Description: 
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>有效的括号</title>
+</head>
+<body>
+  
+<script>
+// 20. 有效的括号 https://leetcode-cn.com/problems/valid-parentheses/
+var isValid = function(s) {
+  if(!s.length) return true;
+  const map = {
+    '(':')',
+    '[':']',
+    '{':'}'
+  }
+
+  const stack = [];
+  let top = '';
+  for(let i=0; i<s.length; i++) {
+    let value = map[s[i]];
+    if(value) {
+      stack.push(value)
+    } else {
+      top = stack.pop();
+      if(top !== s[i]) {
+        return false;
+      }
+    }
+  }
+  return !stack.length;
+}
+
+console.log(isValid('()(){[]'))
+
+// 解法2，直接遍历
+var isValid2 = function(s) {
+  let n = s.length
+  if(!n) return true;
+  if(n%2 !== 0) return false;
+  const stack = []
+  for(let i=0; i<n; i++) {
+    let item = s[i];
+    switch (item) {
+      case '(':
+        stack.push(item)
+        break;
+      case '[':
+        stack.push(item)
+        break;
+      case '{':
+        stack.push(item)
+        break;
+      case ')':
+        var top = stack.pop()
+        if(top !== '(') return false;
+        break;
+      case ']':
+        var top = stack.pop()
+        if(top !== '[') return false;
+        break;
+      case '}':
+        var top = stack.pop()
+        if(top !== '{') return false;
+        break;
+      default:
+        break;
+    }
+  }
+  return !stack.length
+}
+
+console.log(isValid2('()(){[]]'))
+</script>
+</body>
+</html>

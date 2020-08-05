@@ -1,0 +1,49 @@
+<!--
+ * @Author: Helijun
+ * @Date: 2020-08-05 08:40:13
+ * @LastEditors: Helijun
+ * @LastEditTime: 2020-08-05 08:49:32
+ * @Description: 
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>最长公共前缀</title>
+</head>
+<body>
+  
+<script>
+  // 横向遍历解法
+  var longestCommonPrefix = function(strs) {
+    if(!strs.length) return '';
+
+    let res = strs[0];  // 初始化为第一个
+
+    for(let i=1; i<strs.length; i++) {
+      let j = 0;
+      for(; j<strs[i].length && res.length; j++) {
+        if(strs[i][j] !== res[j]) {
+          break;
+        }
+      }
+
+      res = strs[i].substr(0, j);
+      if(res === '') {  // 如果中间的某个环节没有公共前缀，就直接返回了吧
+        return ''
+      }
+
+    }
+    return res;
+  }
+
+  console.log(longestCommonPrefix(["flower","flow","flight"]))
+  console.log(longestCommonPrefix(["dog","racecar","car"]))
+
+
+</script>
+
+
+</body>
+</html>
