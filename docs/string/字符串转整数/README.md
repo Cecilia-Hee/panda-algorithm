@@ -29,6 +29,7 @@ var myAtoi = function(str) {
 ```
 
 ## 自动机☆
+高级，俺不会
 ```js
 /**
  * @param {string} str
