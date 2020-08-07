@@ -2,7 +2,7 @@
  * @Author: Helijun
  * @Date: 2020-08-05 08:40:13
  * @LastEditors: Helijun
- * @LastEditTime: 2020-08-05 08:49:32
+ * @LastEditTime: 2020-08-06 08:45:17
  * @Description: 
 --> 
 <!DOCTYPE html>
@@ -40,6 +40,83 @@
 
   console.log(longestCommonPrefix(["flower","flow","flight"]))
   console.log(longestCommonPrefix(["dog","racecar","car"]))
+
+  // 纵向比较
+  var longestCommonPrefix2 = function(strs) {
+    if(!strs.length) return '';
+    let row = strs.length;
+    let col = strs[0].length;
+    let res = strs[0];
+
+    for(let i=0; i<col; i++) {
+      for(let j=1; j<row; j++) {
+        if(strs[j][i] !== strs[j-1][i]) {
+          res = strs[j].substr(0, i);
+          return res;
+        }
+      }
+    }
+    return res;
+  }
+
+  console.log(longestCommonPrefix2(["flower","flow","flight"]))
+  console.log(longestCommonPrefix2(["dog","racecar","car"]))
+
+  // 二分查找法
+  var longestCommonPrefix3 = function(strs) {
+    if(!strs.length) return '';
+    return binarySearch(strs);
+
+    function binarySearch(arr) {
+      let n = arr.length;
+      if(n === 1) return arr[0]
+      let mid = Math.floor(n/2) ;
+      let left = arr.slice(0, mid);
+      let right = arr.slice(mid, n);
+      return compare(binarySearch(left), binarySearch(right))
+    }
+
+    function compare(str1, str2) {
+      let i = 0;
+      for(;i<str1.length && i<str2.length; i++) {
+        if(str1[i] !== str2[i]) {
+          break;
+        }
+      }
+      return str1.slice(0, i)
+    }
+  }
+
+  console.log(longestCommonPrefix3(["flower","flow","flight"]))
+  console.log(longestCommonPrefix3(["dog","racecar","car"]))
+
+
+  // 仅需最大，最小长度字符串的公共前缀
+  var longestCommonPrefix4 = function(strs) {
+    if(!strs.length) return '';
+    let max = 0;
+    let min = 0;
+    for(let i=1; i<strs.length; i++) {
+      if(strs[i] > strs[max]) {
+        max = i;
+      }
+      if(strs[i] < strs[min]) {
+        min = i
+      }
+    }
+
+    let i=0;
+    for(; i<strs[min].length; i++) {
+      if(strs[min][i] !== strs[max][i]) {
+        break;
+      }
+    }
+
+    return strs[min].slice(0, i)
+  }
+
+  console.log(longestCommonPrefix4(["flower","flow","flight"]))
+  console.log(longestCommonPrefix4(["dog","racecar","car"]))
 
 
 </script>

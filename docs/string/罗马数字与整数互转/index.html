@@ -1,0 +1,72 @@
+<!--
+ * @Author: Helijun
+ * @Date: 2020-08-06 23:18:07
+ * @LastEditors: Helijun
+ * @LastEditTime: 2020-08-07 07:31:53
+ * @Description: 
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>罗马数字转整数</title>
+</head>
+<body>
+
+<script>
+  // 罗马数字转整数
+  var romanToInt = function(s) {
+    if(!s.length) return 0;
+    const map = {
+      'I': 1,
+      'IV': 4,
+      'V': 5,
+      'IX': 9,
+      'X': 10,
+      'XL': 40,
+      'L': 50,
+      'XC': 90,
+      'C': 100,
+      'CD': 400,
+      'D': 500,
+      'CM': 900,
+      'M': 1000
+    }
+    let res = 0;
+    for(let i=0; i<s.length;) {
+      // 先计算有两个字母的
+      if(i+1 < s.length && map[s.substring(i, i+2)]) {
+        res += map[s.substring(i, i+2)]
+        i+=2;
+      } else if(map[s.substring(i, i+1)]){
+        res += map[s.substring(i, i+1)]
+        i+=1;
+      }
+    }
+    return res;
+  };
+
+  console.log(romanToInt("III"))
+
+  // 整数转换为罗马数字
+  var intToRoman = function(num) {
+    // 直接硬编码
+    const chars = [
+      ['','I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'],
+      ['','X', 'XX', 'XXX', 'XL', 'L', 'LX', 'LXX', 'LXXX', 'XC'],
+      ['','C', 'CC', 'CCC', 'CD', 'D', 'DC', 'DCC', 'DCCC', 'CM'],
+      ['','M', 'MM', 'MMM']
+    ]
+
+    let res = '';
+    res += chars[3][Math.floor(num/1000)] + chars[2][Math.floor(num%1000/100)] + chars[1][Math.floor(num%100/10)] + chars[0][num%10];
+    return res;
+  }
+  console.log(intToRoman(3))
+
+
+</script>
+  
+</body>
+</html>

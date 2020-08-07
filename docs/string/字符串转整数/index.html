@@ -1,0 +1,46 @@
+<!--
+ * @Author: Helijun
+ * @Date: 2020-08-07 08:04:55
+ * @LastEditors: Helijun
+ * @LastEditTime: 2020-08-07 08:24:11
+ * @Description: 
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>字符串转整数</title>
+</head>
+<body>
+  
+
+<script>
+  // 正则解法
+var myAtoi = function(str) {
+  if(!str.trim().length) return 0;
+  let newStr = str.trim().match(/^[+-]?\d+/);
+  newStr = newStr ? newStr[0] : 0 ;
+  newStr = Math.min(newStr, 2**31-1);
+  newStr = Math.max(newStr, -(2**31));
+  return newStr
+
+};
+
+console.log(myAtoi('4iiii2'))
+
+
+// parseInt
+var myAtoi2 = function(str) {
+  const max = 2**31-1;
+  const min = -(2**31);
+  let res = parseInt(str, 10);
+  if(isNaN(res)) return 0;
+  res = Math.min(res, max);
+  res = Math.max(res, min);
+  return res;
+}
+</script>
+
+</body>
+</html>
