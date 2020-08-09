@@ -80,3 +80,44 @@ var permuteUnique = function(nums) {
       return res
 };
 ```
+
+## 电话号码的字母组合
+> [17. 电话号码的字母组合](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/)
+ 
+```js
+var letterCombinations = function(digits) {
+  if(!digits.length) return [];
+  let res = [];
+  let path = [];
+
+  const map = {
+    2: 'abc',
+    3: 'def',
+    4: 'ghi',
+    5: 'jkl',
+    6: 'mno',
+    7: 'pqrs',
+    8: 'tuv',
+    9: 'wxyz'
+  }
+
+  let nums = map[digits[0]];
+  backtrace(nums, path, res, 0);
+  
+  return res;
+
+  function backtrace(nums, path, res, index) {
+    if(path.length === digits.length) {
+      res.push(path.slice().join(""));
+      return;
+    }
+
+    for(let j=0; j<nums.length; j++) {
+      path.push(nums[j]);
+      backtrace(map[digits[index+1]], path, res, index+1);
+      path.pop(nums[j])
+    }
+  }
+
+};
+``` 

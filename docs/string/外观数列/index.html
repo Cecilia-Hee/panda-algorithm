@@ -1,0 +1,50 @@
+<!--
+ * @Author: Helijun
+ * @Date: 2020-08-09 15:49:45
+ * @LastEditors: Helijun
+ * @LastEditTime: 2020-08-09 16:10:31
+ * @Description: 
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>外观数列</title>
+</head>
+<body>
+  <script>
+    var countAndSay = function(n) {
+      if(!n) return ''
+      if(n==1) return n.toString();
+
+      var tmpArr = countAndSay(n-1).match(/(\d)\1*/g);
+
+      let res = ''
+
+      tmpArr.forEach((item) => {
+        let count = item.length;
+        let num = item.substring(0,1)
+        res+=count+num+''
+      })
+
+      return res;
+    };
+
+    console.log(countAndSay(4))
+
+    // 正则
+    var countAndSay2 = function(n) {
+      if(!n) return ''
+      if(n==1) return n.toString();
+      let prev = '1';
+      for(let i=1; i<n; i++) {
+        prev = prev.replace(/(\d)\1*/g, (item) => ''+item.length+item[0])
+      }
+      return prev;
+    }
+
+    console.log(countAndSay2(4))
+  </script>
+</body>
+</html>

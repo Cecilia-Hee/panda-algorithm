@@ -1,0 +1,41 @@
+<!--
+ * @Author: Helijun
+ * @Date: 2020-08-09 16:37:50
+ * @LastEditors: Helijun
+ * @LastEditTime: 2020-08-09 16:42:15
+ * @Description: 
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>括号生成</title>
+</head>
+<body>
+  
+<script>
+var generateParenthesis = function(n) {
+  let res = [];
+  function help(cur, left, right) {
+    if(cur.length === 2*n) {
+      res.push(cur)
+      return;
+    }
+
+    if(left < n) {
+      help(cur+'(', left+1, right)
+    }
+    if(right < left) {
+      help(cur+')', left, right +1)
+    }
+  }
+  help('', 0, 0)
+  return res;
+};
+
+console.log(generateParenthesis(3))
+</script>
+
+</body>
+</html>

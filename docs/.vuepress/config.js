@@ -2,7 +2,7 @@
  * @Author: Helijun
  * @Date: 2020-07-13 00:26:54
  * @LastEditors: Helijun
- * @LastEditTime: 2020-08-07 08:52:32
+ * @LastEditTime: 2020-08-09 16:37:09
  * @Description: 
  */ 
 const webpack = require('webpack')
@@ -79,6 +79,9 @@ module.exports = {
           'string/最长公共前缀/',
           'string/罗马数字与整数互转/',
           'string/字符串转整数/',
+          'string/实现strStr/',
+          'string/外观数列/',
+          'string/括号生成/',
         ]
       }
     ]

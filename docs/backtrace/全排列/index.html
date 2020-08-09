@@ -2,7 +2,7 @@
  * @Author: Helijun
  * @Date: 2020-07-13 00:12:12
  * @LastEditors: Helijun
- * @LastEditTime: 2020-07-14 00:15:25
+ * @LastEditTime: 2020-08-08 21:35:15
  * @Description: https://leetcode-cn.com/problems/permutations/submissions/
 -->
 <!DOCTYPE html>
@@ -76,6 +76,46 @@
       backtrace(path);
       return res
     };
+
+
+    // 17 电话号码的字母组合
+    var letterCombinations = function(digits) {
+      if(!digits.length) return [];
+      let res = [];
+      let path = [];
+
+      const map = {
+        2: 'abc',
+        3: 'def',
+        4: 'ghi',
+        5: 'jkl',
+        6: 'mno',
+        7: 'pqrs',
+        8: 'tuv',
+        9: 'wxyz'
+      }
+
+      let nums = map[digits[0]];
+      backtrace(nums, path, res, 0);
+      
+      return res;
+
+      function backtrace(nums, path, res, index) {
+        if(path.length === digits.length) {
+          res.push(path.slice().join(""));
+          return;
+        }
+
+        for(let j=0; j<nums.length; j++) {
+          path.push(nums[j]);
+          backtrace(map[digits[index+1]], path, res, index+1);
+          path.pop(nums[j])
+        }
+      }
+    
+    };
+
+    console.log(letterCombinations('234'))
 
     
 
