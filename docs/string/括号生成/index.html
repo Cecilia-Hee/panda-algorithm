@@ -2,7 +2,7 @@
  * @Author: Helijun
  * @Date: 2020-08-09 16:37:50
  * @LastEditors: Helijun
- * @LastEditTime: 2020-08-09 16:42:15
+ * @LastEditTime: 2020-08-10 07:41:05
  * @Description: 
 --> 
 <!DOCTYPE html>
@@ -35,6 +35,35 @@ var generateParenthesis = function(n) {
 };
 
 console.log(generateParenthesis(3))
+
+// 动态规划
+var generateParenthesis2 = function(n) {
+  if(n === 0) return [];
+  const dp = new Array(n+1).fill("").map(() => new Array())
+  dp[0] = [""]
+
+  console.log('dp:' ,  dp)
+
+  for(let i=1; i<=n; i++) {
+    let cur = []
+    for(let j=0; j<i; j++) {
+      let str1 = dp[j];
+      let str2 = dp[i-j-1];
+      
+      for(let k1 in str1) {
+        for(let k2 in str2) {
+          cur.push("(" + str1[k1] + ")" + str2[k2])
+        }
+      }
+    }
+    dp[i] = cur;
+  }
+
+  return dp[dp.length - 1]
+}
+
+console.log(generateParenthesis2(3))
+
 </script>
 
 </body>

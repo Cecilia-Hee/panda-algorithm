@@ -2,7 +2,7 @@
  * @Author: Helijun
  * @Date: 2020-07-13 00:26:54
  * @LastEditors: Helijun
- * @LastEditTime: 2020-08-09 16:37:09
+ * @LastEditTime: 2020-08-10 08:49:15
  * @Description: 
  */ 
 const webpack = require('webpack')
@@ -82,6 +82,7 @@ module.exports = {
           'string/实现strStr/',
           'string/外观数列/',
           'string/括号生成/',
+          'string/Z字形变换/',
         ]
       }
     ]

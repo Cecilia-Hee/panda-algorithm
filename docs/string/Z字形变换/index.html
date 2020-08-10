@@ -1,0 +1,40 @@
+<!--
+ * @Author: Helijun
+ * @Date: 2020-08-10 08:38:48
+ * @LastEditors: Helijun
+ * @LastEditTime: 2020-08-10 08:47:03
+ * @Description: 
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Z字形变化</title>
+</head>
+<body>
+  
+<script>
+  var convert = function(s, numRows) {
+    if(numRows === 1) return s;
+    const row = new Array(numRows).fill("");
+    let goDown = false;
+    let curRow = 0;
+
+    for(let i=0; i<s.length; i++) {
+      row[curRow] += '' + s[i]
+      if(curRow === 0 || curRow === numRows - 1) {
+        goDown = !goDown;
+      }
+      curRow += goDown ? 1 : -1;
+    }
+
+    console.log(row)
+    return row.join("")
+  }
+
+  console.log(convert("PAYPALISHIRING", 3))
+</script>
+
+</body>
+</html>
