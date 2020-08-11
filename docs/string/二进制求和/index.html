@@ -1,0 +1,94 @@
+<!--
+ * @Author: Helijun
+ * @Date: 2020-08-11 07:59:03
+ * @LastEditors: Helijun
+ * @LastEditTime: 2020-08-11 08:46:58
+ * @Description: 
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>二进制求和</title>
+</head>
+<body>
+
+<script>
+  var addBinary = function(a, b) {
+    let res = [];
+    let sub = 0
+    for(i=a.length - 1, j=b.length-1; i>=0 || j>=0; i--,j--) {
+      let itema = a[i] ? parseInt(a[i]) : 0;
+      let itemb = b[j] ? parseInt(b[j]) : 0
+      let sum = itema + itemb + sub;
+      res.unshift(sum % 2)
+      sub = Math.floor(sum / 2)
+    }
+
+    if(sub > 0) {
+      res.unshift(sub)
+    }
+
+    return res.join("");
+  }
+
+  // console.log(addBinary("1010", "1011"))
+  console.log(addBinary("11", "1"))
+
+  var addBinary2 = function (a, b) {
+    return (BigInt('0b'+a) + BigInt('0b'+b)).toString(2)
+  }
+
+  console.log(addBinary2('11', '1'))
+
+  // 位运算
+  var addBinary3 = function(a, b) {
+    a = parseInt(a, 2)
+    b = parseInt(b, 2)
+    while(b != 0) {
+      let carry = a & b;
+      a = a ^b;
+      b = carry << 1
+    }
+    return a.toString(2)
+    
+  }
+  console.log(addBinary3("11", "1"))
+  console.log(addBinary3("1010", "1011"))
+  console.log(addBinary3("0", "0"))
+
+  // 位运算2
+  var addBinary4 = function (a, b) {
+    let res = []
+    let sub = 0;
+    for(i=a.length - 1, j=b.length-1; i>=0 || j>=0; i--,j--) {
+      let itema = a[i] ? parseInt(a[i], 2) : 0;
+      let itemb = b[j] ? parseInt(b[j], 2) : 0;
+      let val = itema ^ itemb;
+      let curSub = itema & itemb;
+      if(sub) {
+        // 有来自上一位的进位
+        if(val == 0) {
+          val = 1;
+        } else {
+          val = 0;
+          curSub = 1;
+        }
+      }
+      sub = curSub
+      res.unshift(val)
+    }
+    if(sub == 1) {
+      res.unshift(sub)
+    }
+    return res.join("")
+  }
+  console.log(addBinary4("11", "1"))
+  console.log(addBinary4("1010", "1011"))
+  console.log(addBinary4("0", "0"))
+
+</script>  
+
+</body>
+</html>

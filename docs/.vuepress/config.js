@@ -2,7 +2,7 @@
  * @Author: Helijun
  * @Date: 2020-07-13 00:26:54
  * @LastEditors: Helijun
- * @LastEditTime: 2020-08-10 08:49:15
+ * @LastEditTime: 2020-08-11 07:58:48
  * @Description: 
  */ 
 const webpack = require('webpack')
@@ -83,6 +83,7 @@ module.exports = {
           'string/外观数列/',
           'string/括号生成/',
           'string/Z字形变换/',
+          'string/二进制求和/',
         ]
       }
     ]
