@@ -1,0 +1,44 @@
+<!--
+ * @Author: Helijun
+ * @Date: 2020-08-12 23:04:12
+ * @LastEditors: Helijun
+ * @LastEditTime: 2020-08-12 23:21:33
+ * @Description: 
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>反转</title>
+</head>
+<body>
+
+  <script>
+    var reverseWords = function(s) {
+      s = s.trim();
+      if(!s) return ''
+      let arr = s.split(" ");
+      let res = arr.reduce((prev, cur, index) => {
+        if(cur) {
+          prev.unshift(cur)       
+        }
+        return prev;
+      }, [])
+      return res.join(" ")
+    }
+
+    console.log(reverseWords("a good   example"))
+
+    // 正则解法
+    var reverseWords2 = function(s) {
+      s = s.trim();
+      if(!s) return ''
+      return s.split(/\s+/).reverse().join(" ")
+    }
+    console.log(reverseWords2("a good   example"))
+
+  </script>
+  
+</body>
+</html>

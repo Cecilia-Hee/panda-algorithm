@@ -2,7 +2,7 @@
  * @Author: Helijun
  * @Date: 2020-07-13 00:26:54
  * @LastEditors: Helijun
- * @LastEditTime: 2020-08-11 07:58:48
+ * @LastEditTime: 2020-08-12 23:04:43
  * @Description: 
  */ 
 const webpack = require('webpack')
@@ -84,6 +84,7 @@ module.exports = {
           'string/括号生成/',
           'string/Z字形变换/',
           'string/二进制求和/',
+          'string/反转字符串中的单词/',
         ]
       }
     ]
