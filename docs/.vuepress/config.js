@@ -2,7 +2,7 @@
  * @Author: Helijun
  * @Date: 2020-07-13 00:26:54
  * @LastEditors: Helijun
- * @LastEditTime: 2020-08-12 23:04:43
+ * @LastEditTime: 2020-08-16 18:12:45
  * @Description: 
  */ 
 const webpack = require('webpack')
@@ -85,6 +85,14 @@ module.exports = {
           'string/Z字形变换/',
           'string/二进制求和/',
           'string/反转字符串中的单词/',
+        ]
+      },
+      {
+        title: '数组',
+        collapseable: true,
+        children: [
+          'array/',
+          'array/合并排序的数组/',        
         ]
       }
     ]
