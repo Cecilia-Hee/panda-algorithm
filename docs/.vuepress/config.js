@@ -2,7 +2,7 @@
  * @Author: Helijun
  * @Date: 2020-07-13 00:26:54
  * @LastEditors: Helijun
- * @LastEditTime: 2020-08-16 18:12:45
+ * @LastEditTime: 2020-08-28 08:38:40
  * @Description: 
  */ 
 const webpack = require('webpack')
@@ -93,6 +93,13 @@ module.exports = {
         children: [
           'array/',
           'array/合并排序的数组/',        
+        ]
+      },
+      {
+        title: '滑动窗口',
+        collapseable: true,
+        children: [
+          'sliding-window/',        
         ]
       }
     ]
