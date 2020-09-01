@@ -2,7 +2,7 @@
  * @Author: Helijun
  * @Date: 2020-07-13 00:26:54
  * @LastEditors: Helijun
- * @LastEditTime: 2020-08-28 08:38:40
+ * @LastEditTime: 2020-09-01 07:55:04
  * @Description: 
  */ 
 const webpack = require('webpack')
@@ -100,6 +100,13 @@ module.exports = {
         collapseable: true,
         children: [
           'sliding-window/',        
+        ]
+      },
+      {
+        title: '贪心算法',
+        collapseable: true,
+        children: [
+          'greedy/',        
         ]
       }
     ]
