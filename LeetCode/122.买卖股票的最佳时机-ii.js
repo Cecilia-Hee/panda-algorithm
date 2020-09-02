@@ -67,5 +67,68 @@ var maxProfit = function (prices) {
 
   return cash;
 }
+
+// 解法3： 递归
+var maxProfit = function(prices) {
+  if(!prices || prices.length < 2) return 0;
+
+  return dfs(prices, 0, false)
+
+  function dfs(prices, index, status) {
+    if(index === prices.length) return 0;
+
+    // 分别用a,b,c表示不动，买入，卖出
+    let a=0; 
+    let b=0;
+    let c=0;
+    a = dfs(prices, index+1, status);
+    if(status) {
+      // 上一次是买入，本次可卖出
+      b = dfs(prices, index+1, false) + prices[index]
+    } else {
+      c = dfs(prices, index+1, true) - prices[index]
+    }
+
+    return Math.max(a, b, c)
+  }
+}
+
+// 解法4， 递归+剪枝, 有问题，可以将index+status作为key
+var maxProfit = function (prices) {  
+  if(!prices || prices.length < 2) return 0;
+  const map = new Map()
+
+  return dfs(prices, 0, false, map);
+
+  function dfs(prices, index, status, map) {
+    if(map.has(index+status+'')) {
+      return map.get(index+status+'')
+    }
+
+    if(index === prices.length) {
+      map.set(index+status+'', 0);
+      return 0;
+    };
+
+    // 分别用a,b,c表示不动，买入，卖出
+    let a=0; 
+    let b=0;
+    let c=0;
+    a = dfs(prices, index+1, status, map);
+    if(status) {
+      // 上一次是买入，本次可卖出
+      b = dfs(prices, index+1, false, map) + prices[index]
+    } else {
+      c = dfs(prices, index+1, true, map) - prices[index]
+    }
+
+    map.set(index+status+'', Math.max(a, b, c))
+
+    console.log(index, status)
+
+    return map.get(index+status+'')
+  }
+
+}
 // @lc code=end
 
