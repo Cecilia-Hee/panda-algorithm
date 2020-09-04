@@ -2,7 +2,7 @@
  * @Author: Helijun
  * @Date: 2020-07-13 00:26:54
  * @LastEditors: Helijun
- * @LastEditTime: 2020-09-01 07:55:04
+ * @LastEditTime: 2020-09-03 23:59:59
  * @Description: 
  */ 
 const webpack = require('webpack')
@@ -107,6 +107,13 @@ module.exports = {
         collapseable: true,
         children: [
           'greedy/',        
+        ]
+      },
+      {
+        title: '树',
+        collapseable: true,
+        children: [
+          'tree/',        
         ]
       }
     ]

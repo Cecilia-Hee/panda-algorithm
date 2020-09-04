@@ -16,3 +16,8 @@
 
 [122. 买卖股票的最佳时机 II](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/)
 [解法]('../../LeetCode/122.买卖股票的最佳时机-ii.js)
+
+[1046. 最后一块石头的重量](https://leetcode-cn.com/problems/last-stone-weight/description/) [解法](../../LeetCode/1046.最后一块石头的重量.js)
+
+[1049. 最后一块石头的重量 II](https://leetcode-cn.com/problems/last-stone-weight-ii/) [解法](../../LeetCode/1049.最后一块石头的重量-ii.js)
+
