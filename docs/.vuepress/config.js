@@ -2,7 +2,7 @@
  * @Author: Helijun
  * @Date: 2020-07-13 00:26:54
  * @LastEditors: Helijun
- * @LastEditTime: 2020-09-03 23:59:59
+ * @LastEditTime: 2020-09-07 22:36:52
  * @Description: 
  */ 
 const webpack = require('webpack')
@@ -114,6 +114,13 @@ module.exports = {
         collapseable: true,
         children: [
           'tree/',        
+        ]
+      },
+      {
+        title: '堆',
+        collapseable: true,
+        children: [
+          'heap/',        
         ]
       }
     ]
